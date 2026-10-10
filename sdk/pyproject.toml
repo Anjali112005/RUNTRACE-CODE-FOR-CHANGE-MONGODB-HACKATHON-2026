@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "runtrace-sdk"
+version = "0.1.0"
+description = "Python SDK for RunTrace: record instrumented workflow runs for regression debugging."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["httpx>=0.27,<1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+runtrace = "runtrace_sdk.cli:main"
+
+[tool.setuptools]
+packages = ["runtrace_sdk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

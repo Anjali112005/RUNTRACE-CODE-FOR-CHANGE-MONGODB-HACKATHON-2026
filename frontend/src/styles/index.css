@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens. Light is the default; .dark on <html> switches the palette. */
+:root {
+  --accent: #ffc400;
+  --accent-hover: #e6a900;
+  --accent-fg: #111111;
+  --black: #111111;
+  --fg: #111111;
+  --muted: #555555;
+  --bg: #ffffff;
+  --soft: #f7f7f5;
+  --card: #ffffff;
+  --border: #d7d7d7;
+  --border-strong: #111111;
+  --inverse-bg: #111111;
+  --inverse-fg: #ffffff;
+  --success: #15803d;
+  --success-soft: #dcfce7;
+  --danger: #c62828;
+  --danger-soft: #fde2e2;
+  --warning: #b45309;
+  --warning-soft: #fef3c7;
+  --info: #1d4ed8;
+  --accent-soft: #fff6d6;
+  color-scheme: light;
+}
+
+.dark {
+  --fg: #f5f6f8;
+  --muted: #a3a8b3;
+  --bg: #111214;
+  --soft: #16181c;
+  --card: #1c1f24;
+  --border: #30343b;
+  --border-strong: #5b616c;
+  --inverse-bg: #f5f6f8;
+  --inverse-fg: #111111;
+  --success: #4ade80;
+  --success-soft: #12301f;
+  --danger: #f87171;
+  --danger-soft: #3a1717;
+  --warning: #fbbf24;
+  --warning-soft: #3a2a0c;
+  --info: #93c5fd;
+  --accent-soft: #2e2710;
+  color-scheme: dark;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    @apply bg-soft font-sans text-fg antialiased;
+    font-size: 14px;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold uppercase tracking-wide;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  code,
+  pre,
+  kbd {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-md border border-line bg-card;
+  }
+  .card-strong {
+    @apply rounded-md border-[1.5px] border-strong bg-card;
+  }
+  .section-title {
+    @apply font-display text-lg font-bold uppercase tracking-wide;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .input {
+    @apply w-full rounded-md border-[1.5px] border-line bg-card px-3 py-2 text-sm text-fg placeholder:text-muted;
+    @apply focus:border-strong focus:outline-none;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border-[1.5px] px-3.5 py-2 text-sm font-semibold;
+    @apply transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn border-strong bg-accent text-accent-fg hover:bg-accent-hover;
+  }
+  .btn-secondary {
+    @apply btn border-inverse bg-inverse text-inverse-fg hover:opacity-90;
+  }
+  .btn-ghost {
+    @apply btn border-line bg-card text-fg hover:border-strong;
+  }
+  .btn-danger {
+    @apply btn border-danger bg-card text-danger hover:bg-[var(--danger-soft)];
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded border-[1.5px] px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide;
+  }
+  .table-compact {
+    @apply w-full border-collapse text-sm;
+  }
+  .table-compact th {
+    @apply border-b-[1.5px] border-strong px-3 py-2 text-left font-display text-xs font-bold uppercase tracking-wider text-muted;
+  }
+  .table-compact td {
+    @apply border-b border-line px-3 py-2 align-middle;
+  }
+  .table-compact tbody tr:hover {
+    @apply bg-soft;
+  }
+  .metric {
+    @apply font-display text-3xl font-bold leading-none;
+  }
+  .mono-id {
+    @apply font-mono text-xs text-muted;
+  }
+}
